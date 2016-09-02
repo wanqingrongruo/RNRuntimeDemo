@@ -42,14 +42,15 @@ typedef NS_ENUM(NSInteger, ModuleType){
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self createPersonClass] ;
+//    [self createPersonClass] ;
+//    
+//    [self useAssociation] ;
     
-    [self useAssociation] ;
+   
+    [self dicAndModel] ;
     
-    //[self dealloc] ;
-    
-    RNSecondViewController *sec = [[RNSecondViewController alloc] init] ;
-    [self.navigationController pushViewController:sec animated:true] ;
+//    RNSecondViewController *sec = [[RNSecondViewController alloc] init] ;
+//    [self.navigationController pushViewController:sec animated:true] ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,7 +69,7 @@ typedef NS_ENUM(NSInteger, ModuleType){
 {
     People *vae = [[People alloc]init] ;
     vae.name = @"许嵩" ;
-    vae.age = 30 ;
+    vae.age = @30 ;
     [vae setValue:@(180) forKey:@"height"] ;
     [vae setValue:@"860514" forKey:@"Id"] ;
     vae.newAblum = @"青年晚报" ;
@@ -78,7 +79,7 @@ typedef NS_ENUM(NSInteger, ModuleType){
     } ;
     
     
-    NSLog(@"%@今年%d,身高%f,id为%@,最新专辑是%@",vae.name,vae.age,vae.height,vae.Id,vae.newAblum) ;
+    NSLog(@"%@今年%@,身高%f,id为%@,最新专辑是%@",vae.name,vae.age,vae.height,vae.Id,vae.newAblum) ;
     vae.associatedCallBack() ;
     
     
@@ -93,6 +94,25 @@ typedef NS_ENUM(NSInteger, ModuleType){
     Bird *b = [[Bird alloc] init] ;
     ((void (*)(id, SEL))objc_msgSend)((id)b, @selector(sing)) ;
     
+}
+
+- (void)dicAndModel
+{
+    NSDictionary *dict = @{
+                           @"name" : @"苍井空",
+                           @"age"  : @(18),
+                           @"occupation" : @"老师",
+                           @"nationality" : @"日本"
+                           };
+    
+    // 字典转模型
+    People *cangTeacher = [[People alloc] initWithDictionary:dict];
+    NSLog(@"热烈欢迎，从%@远道而来的%@岁的%@%@",cangTeacher.nationality,cangTeacher.age,cangTeacher.name,cangTeacher.occupation);
+    
+    // 模型转字典
+    NSDictionary *covertedDict = [cangTeacher coverToDictionary];
+    NSLog(@"%@",covertedDict);
+
 }
 
 #pragma mark - 动态创建一个类

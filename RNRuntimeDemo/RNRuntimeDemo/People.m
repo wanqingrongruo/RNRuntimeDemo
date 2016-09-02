@@ -9,6 +9,7 @@
 #import "People.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
+#import "NSObject+Archieve.h"
 
 @implementation People
 
@@ -22,6 +23,27 @@
     }
     
     return self ;
+}
+
+- (instancetype)initWithCoder: (NSCoder *)aDecoder
+{
+    self = [super init] ;
+    
+    if (self) {
+        
+        // 记得先设置忽略属性
+        // self.ignoredIvarNames
+        
+        [self decode:aDecoder] ;
+    }
+    
+    return self ;
+}
+
+- (void)encode:(NSCoder *)aCoder
+{
+    
+    [self encode:aCoder] ;
 }
 
 - (NSDictionary *) allProperties
@@ -138,6 +160,81 @@
 void singAction(id self, SEL cmd)
 {
     NSLog(@"%@ 唱歌啦!",((People *)self).name) ;
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super init] ;
+    if (self) {
+        for (NSString *key in dictionary.allKeys) {
+            id value = dictionary[key] ;
+            
+            SEL setter = [self propertySetterByKey:key] ;
+            if (setter) {
+                ((void (*)(id, SEL, id))objc_msgSend)(self, setter, value) ;
+            }
+        }
+    }
+    
+    return self ;
+}
+
+- (NSDictionary *)coverToDictionary
+{
+    unsigned int count = 0 ;
+    objc_property_t *properties = class_copyPropertyList([self class], &count) ;
+    if (count!= 0) {
+        NSMutableDictionary *resultDic = [@{} mutableCopy] ;
+        
+        for (NSUInteger i = 0; i < count; i++) {
+            const void *propertyName = property_getName(properties[i]) ;
+            NSString *name = [NSString stringWithUTF8String:propertyName] ;
+            
+            SEL getter = [self propertyGetterByKey:name] ;
+            if (getter) {
+                id value = ((id (*)(id, SEL))objc_msgSend)(self, getter);
+                if (value) {
+                    resultDic[name] = value ;
+                }else{
+                    resultDic[name] = @"value值不能为 nil" ;
+                }
+            }
+            
+        }
+        
+        free(properties) ;
+        
+        return resultDic ;
+    }
+    
+    free(properties) ;
+    
+    return  nil ;
+}
+
+#pragma mark - private methods
+
+// 生成setter方法
+- (SEL)propertySetterByKey:(NSString *)key
+{
+    // 首字母大写，你懂得
+    NSString *propertySetterName = [NSString stringWithFormat:@"set%@:", key.capitalizedString];
+    
+    SEL setter = NSSelectorFromString(propertySetterName);
+    if ([self respondsToSelector:setter]) {
+        return setter;
+    }
+    return nil;
+}
+
+// 生成getter方法
+- (SEL)propertyGetterByKey:(NSString *)key
+{
+    SEL getter = NSSelectorFromString(key);
+    if ([self respondsToSelector:getter]) {
+        return getter;
+    }
+    return nil;
 }
 
 @end

@@ -21,6 +21,8 @@
 #import "People+Associated.h"
 #import "Bird.h"
 
+#import "RNSecondViewController.h"
+
 typedef NS_ENUM(NSInteger, ModuleType){
     ModuleTypeAssociateObject = 0, // 关联对象
     ModuleTypeMethodSwizzling = 1, // 方法交换
@@ -43,11 +45,21 @@ typedef NS_ENUM(NSInteger, ModuleType){
     [self createPersonClass] ;
     
     [self useAssociation] ;
+    
+    //[self dealloc] ;
+    
+    RNSecondViewController *sec = [[RNSecondViewController alloc] init] ;
+    [self.navigationController pushViewController:sec animated:true] ;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    NSLog(@"wowoowowo") ;
 }
 
 #pragma mark - 关联对象的运用

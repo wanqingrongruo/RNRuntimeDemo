@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E018A17F1D78153000B03292 /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = E018A17E1D78153000B03292 /* Bird.m */; };
+		E018A1821D7912DD00B03292 /* UIViewController+Dealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = E018A1811D7912DD00B03292 /* UIViewController+Dealloc.m */; };
+		E018A1851D7914C100B03292 /* RNSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E018A1841D7914C100B03292 /* RNSecondViewController.m */; };
 		E03EA0481D76B11F006DD851 /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = E03EA0471D76B11F006DD851 /* People.m */; };
 		E03EA04E1D76B1B2006DD851 /* People+Associated.m in Sources */ = {isa = PBXBuildFile; fileRef = E03EA04D1D76B1B2006DD851 /* People+Associated.m */; };
 		E09A2B431D755A820059F023 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E09A2B421D755A820059F023 /* main.m */; };
@@ -40,6 +42,10 @@
 /* Begin PBXFileReference section */
 		E018A17D1D78153000B03292 /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
 		E018A17E1D78153000B03292 /* Bird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bird.m; sourceTree = "<group>"; };
+		E018A1801D7912DD00B03292 /* UIViewController+Dealloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Dealloc.h"; sourceTree = "<group>"; };
+		E018A1811D7912DD00B03292 /* UIViewController+Dealloc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Dealloc.m"; sourceTree = "<group>"; };
+		E018A1831D7914C100B03292 /* RNSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSecondViewController.h; sourceTree = "<group>"; };
+		E018A1841D7914C100B03292 /* RNSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSecondViewController.m; sourceTree = "<group>"; };
 		E03EA0461D76B11F006DD851 /* People.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = People.h; sourceTree = "<group>"; };
 		E03EA0471D76B11F006DD851 /* People.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = People.m; sourceTree = "<group>"; };
 		E03EA04C1D76B1B2006DD851 /* People+Associated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "People+Associated.h"; sourceTree = "<group>"; };
@@ -114,6 +120,8 @@
 				E09A2B451D755A820059F023 /* AppDelegate.m */,
 				E09A2B471D755A820059F023 /* ViewController.h */,
 				E09A2B481D755A820059F023 /* ViewController.m */,
+				E018A1831D7914C100B03292 /* RNSecondViewController.h */,
+				E018A1841D7914C100B03292 /* RNSecondViewController.m */,
 				E03EA0461D76B11F006DD851 /* People.h */,
 				E03EA0471D76B11F006DD851 /* People.m */,
 				E018A17D1D78153000B03292 /* Bird.h */,
@@ -177,6 +185,8 @@
 		E09A2B761D755C350059F023 /* 方法交换 */ = {
 			isa = PBXGroup;
 			children = (
+				E018A1801D7912DD00B03292 /* UIViewController+Dealloc.h */,
+				E018A1811D7912DD00B03292 /* UIViewController+Dealloc.m */,
 			);
 			path = "方法交换";
 			sourceTree = "<group>";
@@ -345,7 +355,9 @@
 				E03EA04E1D76B1B2006DD851 /* People+Associated.m in Sources */,
 				E018A17F1D78153000B03292 /* Bird.m in Sources */,
 				E09A2B491D755A820059F023 /* ViewController.m in Sources */,
+				E018A1821D7912DD00B03292 /* UIViewController+Dealloc.m in Sources */,
 				E09A2B461D755A820059F023 /* AppDelegate.m in Sources */,
+				E018A1851D7914C100B03292 /* RNSecondViewController.m in Sources */,
 				E09A2B431D755A820059F023 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
